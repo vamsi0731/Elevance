@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class Test2 {
   @Test
-  public void task2() throws InterruptedException {//add multiple products
+  public void task2() throws InterruptedException {
 	  LocalTime now   = LocalTime.now();                  
 		LocalTime start = LocalTime.of(18, 0);
 		LocalTime end   = LocalTime.of(19, 0);

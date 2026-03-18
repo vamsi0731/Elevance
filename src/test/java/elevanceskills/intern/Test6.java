@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class Test6 {
   @Test
   public void task6() throws InterruptedException {
-	  LocalTime now   = LocalTime.now();                  
+	  LocalTime now   = LocalTime.now();                     
 		LocalTime start = LocalTime.of(15, 0);
 		LocalTime end   = LocalTime.of(18, 0);
 		

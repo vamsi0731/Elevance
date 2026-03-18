@@ -18,7 +18,7 @@ import jakarta.mail.internet.MimeMessage;
 
 public class Test4 {
   @Test
-  public void task4() {
+  public void task4() { 
 	  WebDriver driver = new ChromeDriver();
 		driver.get("https://www.amazon.in");
 		driver.manage().window().maximize();
