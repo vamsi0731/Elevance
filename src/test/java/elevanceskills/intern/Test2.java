@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class Test2 {
   @Test
-  public void task2() throws InterruptedException {
+  public void adding_multiple_products() throws InterruptedException { 
 	  LocalTime now   = LocalTime.now();                  
 		LocalTime start = LocalTime.of(18, 0);
 		LocalTime end   = LocalTime.of(19, 0);
@@ -54,10 +54,9 @@ public class Test2 {
 	    WebElement totalamount=driver.findElement(By.xpath("//*[@id=\"sc-subtotal-amount-activecart\"]/span"));
 	    String totaltext=totalamount.getText();
 	    Thread.sleep(1000);
-	    System.out.println("totalprice: " + totaltext); 
-	    totaltext = totaltext.replaceAll("[^0-9]", "");//it removes every thing except digits
+	    totaltext = totaltext.replaceAll("[^0-9.]", "");//it removes every thing except digits
 	    double totalprice =Double.parseDouble(totaltext);
-	    
+	    System.out.println("totalprice: " + totalprice); 
 	    
 	    if(totalprice >= 2000) {
 	    	  System.out.println("Price Validation is Passed ");

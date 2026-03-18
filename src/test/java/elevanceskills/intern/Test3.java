@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class Test3 {
   @Test
-  public void task3() {           
+  public void log_in() {           
 	  LocalTime now   = LocalTime.now();                  
 		LocalTime start = LocalTime.of(12, 0);
 		LocalTime end   = LocalTime.of(15, 0);

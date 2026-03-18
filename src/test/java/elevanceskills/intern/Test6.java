@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
 
 public class Test6 {
   @Test
-  public void task6() throws InterruptedException {
+  public void ratting_product() throws InterruptedException {
 	  LocalTime now   = LocalTime.now();                     
 		LocalTime start = LocalTime.of(15, 0);
 		LocalTime end   = LocalTime.of(18, 0);
 		
 		if(now.isBefore(start) || (now.isAfter(end))) {
 			System.out.println("this will run in between 3PM to 6PM");
-		     return;
+		     //return;
 		}
 	 	 System.out.println("Execution time is valid");
 		WebDriver driver = new ChromeDriver();
@@ -84,12 +84,11 @@ public class Test6 {
 		
 		 WebElement totalamount=driver.findElement(By.xpath("//*[@id=\"sc-subtotal-amount-activecart\"]/span"));
 		 String totaltext=totalamount.getText();
-		System.out.println("total price" + totaltext);
-		 totaltext = totaltext.replaceAll("[^0-9]", "");//it removes every thing except digits
-		 int totalprice =Integer.parseInt(totaltext);
-		 
+		 totaltext = totaltext.replaceAll("[^0-9.]", "");//it removes every thing except digits
+		 double totalprice = Double.parseDouble(totaltext);
+		 System.out.println("total price" + totalprice);
 		    
-		 if(totalprice >= 2000) {
+		 if(totalprice >= 100000) {
 		      
 		        System.out.println("TEST SUCCESS"); 
 		        

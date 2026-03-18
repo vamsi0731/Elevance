@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 public class Test5 {
   @Test
-  public void task5() throws InterruptedException {
+  public void conforming_order() throws InterruptedException {
 	  LocalTime now   = LocalTime.now();                  
 		LocalTime start = LocalTime.of(18, 0);
 		LocalTime end   = LocalTime.of(19, 0);
@@ -44,13 +44,13 @@ public class Test5 {
 		}
 	   
 		WebElement searchbox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
-		searchbox.sendKeys("boat ear pots");
+		searchbox.sendKeys("earbuds");
 		String inputtext = searchbox.getAttribute("value");
 		System.out.println("Search product:" + inputtext);
 		searchbox.submit();
 		Thread.sleep(4000);
 		String title = driver.findElement(By.xpath("//a/h2/span")).getText();
-		System.out.println("product 1:" + title);
+		System.out.println("product :" + title);
 		//ratting
 		WebElement rattingelement=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//span[@class='a-size-small a-color-base']")));
 		String ratting = rattingelement.getText();
@@ -63,14 +63,14 @@ public class Test5 {
 		WebElement gotocart=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ewc-compact-actions-container\"]/div/div[2]/span/span/a")));
 		gotocart.click();
 		//get price tag
-		 WebElement totalamount=driver.findElement(By.xpath("//*[@id=\"sc-subtotal-amount-activecart\"]/span"));
-		 String totaltext=totalamount.getText();
-		  System.out.println("price of the product:" + totaltext); 
-		 totaltext = totaltext.replaceAll("[^0-9]", "");//it removes every thing except digits
-		 int totalprice =Integer.parseInt(totaltext);
+		 WebElement totalamount=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"sc-subtotal-amount-activecart\"]/span")));
+		 String totaltext=totalamount.getText(); 
+		 totaltext = totaltext.replaceAll("[^0-9.]","");//it removes every thing except digits
+		 double totalprice = Double.parseDouble(totaltext);
+		 System.out.println("price of the product:" + totalprice);
 		    
 		 if(totalprice >= 500) {
-			    System.out.println("TEST PASSE");
+			    System.out.println("TEST PASS");
 		        System.out.println("total amount is more than 500"); 
 		        //CHECTOUT
 		        driver.findElement(By.xpath("//*[@id=\"sc-buy-box-ptc-button\"]")).click();
@@ -80,7 +80,8 @@ public class Test5 {
 		    }
 		 else {
 		    	 System.out.println("TEST IS FAILED ");
-		    	 System.out.println("place your order");
+		    	 System.out.println("price should be more than 500");
+		    	 System.out.println("select another product");
 		    }
 		
 		  driver.close();

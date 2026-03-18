@@ -3,7 +3,6 @@ package elevanceskills.intern;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,14 +14,13 @@ import org.testng.annotations.Test;
 public class Test1 {
 	WebDriver driver;
   @Test
-  public void task1() throws Exception {
+  public void Selecting_product() throws Exception {
 		LocalTime now = LocalTime.now();
 		LocalTime start = LocalTime.of(15, 0);
 		LocalTime end = LocalTime.of(18, 0);
 		
 		if(now.isBefore(start) || now.isAfter(end)) {
 			System.out.println("test will run only between 3 pm and 6 pm");
-			
 			return;
 		}
 		System.out.println("Execution time is valid" ); 
@@ -35,12 +33,10 @@ public class Test1 {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			Thread.sleep(4000);
 			WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
-			input.sendKeys("shoe");
+			input.sendKeys("jogger jeans");
 			String inputtext = input.getAttribute("value");
 			System.out.println("Search product:" + inputtext);
-			
 			driver.findElement(By.id("nav-search-submit-button")).click();
-			
 			Thread.sleep(4000);
 			List<WebElement> items = driver.findElements(By.cssSelector("div.s-main-slot div[data-components-type='s-search-result']"));
 			//electronics keyword list
@@ -96,6 +92,12 @@ public class Test1 {
 	
 			String title=title2.getText();
 			System.out.println("product name:" + title);
+			char firstletter = Character.toUpperCase(title.charAt(0));
+			if(firstletter == 'A' || firstletter == 'B' ||firstletter == 'C' || firstletter == 'D') {
+			 System.out.println("Skip A,B,C,D");
+			 System.out.println("Search another product");
+			 	return;
+			}
 			WebElement rattingelement=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//span[@class='a-size-small a-color-base']")));
 			String ratting = rattingelement.getText();
 			

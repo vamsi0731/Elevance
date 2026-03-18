@@ -18,7 +18,7 @@ import jakarta.mail.internet.MimeMessage;
 
 public class Test4 {
   @Test
-  public void task4() { 
+  public void moniter_price() { 
 	  WebDriver driver = new ChromeDriver();
 		driver.get("https://www.amazon.in");
 		driver.manage().window().maximize();
@@ -29,7 +29,7 @@ public class Test4 {
 		System.out.println("Search product:" + inputtext);
 		searchbox.submit();
 		String title = driver.findElement(By.xpath("//a/h2/span")).getText();
-		System.out.println("product 1:" + title);
+		System.out.println("product :" + title);
 		//ratting
 		WebElement rattingelement=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//span[@class='a-size-small a-color-base']")));
 		String ratting = rattingelement.getText();
@@ -44,10 +44,10 @@ public class Test4 {
 		//price tag
 		WebElement totalamount=driver.findElement(By.xpath("//*[@id=\"sc-subtotal-amount-activecart\"]"));
 		 String totalprice=totalamount.getText();
-		 System.out.println("Product price found:" + totalprice);
 		 String pricetag = totalprice.replaceAll("[^0-9.]", "");
 		 double currentprice = Double.parseDouble(pricetag);
-		 double threshold=1000.0;
+		 System.out.println("Product price found:" + currentprice);
+		 double threshold=3000.0;
 		 String messageBody;
 		 if(currentprice < threshold) {
 			 messageBody="price is dropped";	 
@@ -61,13 +61,20 @@ public class Test4 {
 		 }
 		 driver.close();
 		 sendEmail("vamsikrishna0731@gmail.com","bacldpxagevqqfup", "vamsikrishnavk0731@gmail.com", "amazon price alert", messageBody);
+		 //steps to get this password"bacldpxagevqqfup"
+		 // go to your google account.
+		 //navigate to security.
+		 //make sure turn on 2 step verification click on 2 step verification.
+		 //we can see an an option app password click on it.
+		 //choose any name and click create.
+		 //automatically it will generate copy that and paste here.
 	}	 
 public static void sendEmail(String from, String appPassword, String to, String subject, String body) {
 			    
-			  //  String to = "vamsikrishna0731@gmail.com";
+			  //  String to = "vamsikrishnavk0731@gmail.com";
 
 			  
-			  //  String from = "vamsikrishnavk 0731@gmail.com";
+			  //  String from = "vamsikrishna0731@gmail.com";
 
 			   
 			    //String host = "smtp.gmail.com";
