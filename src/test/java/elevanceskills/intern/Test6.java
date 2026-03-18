@@ -2,6 +2,7 @@ package elevanceskills.intern;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class Test6 {
 		
 		if(now.isBefore(start) || (now.isAfter(end))) {
 			System.out.println("this will run in between 3PM to 6PM");
-		     //return;
+		     return;
 		}
 	 	 System.out.println("Execution time is valid");
 		WebDriver driver = new ChromeDriver();
@@ -28,11 +29,13 @@ public class Test6 {
 		driver.manage().window().maximize();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement searchbox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
-		searchbox.sendKeys("canon camera"); 
+		searchbox.sendKeys("camera"); 
 		String inputtext = searchbox.getAttribute("value");
 		System.out.println("Search product:" + inputtext);
 		searchbox.submit(); 
-		//brand      
+		//brand  
+		
+
 			WebElement brand=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"p_123/359121\"]/span/a/div/label/i")));	
 	      	brand.click();
 	      	System.out.println("Brand is selected");
@@ -40,7 +43,7 @@ public class Test6 {
 	      	WebElement price=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"p_36/dynamic-picker-0\"]/span/a/span")));
 	      	price.click();
 		    System.out.println("price range is selected");
-		    WebElement product=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='RF 75-300mm F4-5.6 Telephoto Zoom Lens | Versatile Zoom for Wildlife, Sports & Portrait Photography']")));
+		    WebElement product=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Canon EF 50MM F/1.8 STM Lens for Canon DSLR Cameras']")));
 		    product.click();
 		    Thread.sleep(4000);
 			//switch window
@@ -57,7 +60,7 @@ public class Test6 {
 			double ratting = Double.parseDouble(rattingtext.split(" ")[0]);
 			if(ratting > 4) {
 	         	System.out.println("ratting of the product:" + ratting);
-	         	System.out.println("TEST PASSED");
+	         	System.out.println("RATTING VALIDATION PASSED");
 			}
 			else {
 				System.out.println("ratting of the product:" + ratting);
@@ -75,7 +78,7 @@ public class Test6 {
 		if(title.toLowerCase().startsWith("c")) {
 		 	
 			System.out.println("product is vaild it is starting with 'C'");
-			 System.out.println("TEST PASSED");
+			 System.out.println("PRODUCT VALIDATION PASSED");
 		}
 		else {
 		 	 System.out.println("TEST FAILED");
@@ -88,8 +91,8 @@ public class Test6 {
 		 double totalprice = Double.parseDouble(totaltext);
 		 System.out.println("total price" + totalprice);
 		    
-		 if(totalprice >= 100000) {
-		      
+		 if(totalprice >= 2000) {
+			    System.out.println("price validation passed");
 		        System.out.println("TEST SUCCESS"); 
 		        
 		    }
